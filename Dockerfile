@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM alpine:latest
 LABEL maintainer="John Burt"
 
 ENV SQUID_CACHE_DIR=/var/spool/squid \
@@ -7,15 +7,9 @@ ENV SQUID_CACHE_DIR=/var/spool/squid \
 
 RUN \
  echo "**** install packages ****" && \
- apt-get update && \
- DEBIAN_FRONTEND=noninteractive apt-get install -y \
-	squid && \
- echo "**** cleanup ****" && \
- apt-get clean && \
- rm -rf \
-	/tmp/* \
-	/var/lib/apt/lists/* \
-	/var/tmp/*
+ apk add --no-cache \
+ bash \
+ squid
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 COPY example /example
