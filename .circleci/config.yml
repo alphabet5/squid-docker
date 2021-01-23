@@ -5,4 +5,5 @@ workflows:
   build-and-publish-docker-image:
     jobs:
       - docker/publish:
-          image: alphabet5/squid:latest
+          image: alphabet5/squid
+          tag: latest
