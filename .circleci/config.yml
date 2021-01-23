@@ -1,5 +1,5 @@
 orbs:
-  docker: circleci/docker@x.y.z
+  docker: circleci/docker@1.5.0
 version: 2.1
 workflows:
   build-and-publish-docker-image:
