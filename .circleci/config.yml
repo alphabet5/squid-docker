@@ -7,13 +7,13 @@ workflows:
       - docker/publish:
           image: alphabet5/squid
           tag: latest
-  nightly:
-    triggers: #use the triggers key to indicate a scheduled build
-      - schedule:
-          cron: "0 0 * * *" # use cron syntax to set the schedule
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - docker/publish
+#  nightly:
+#    triggers: #use the triggers key to indicate a scheduled build
+#      - schedule:
+#          cron: "0 0 * * *" # use cron syntax to set the schedule
+#          filters:
+#            branches:
+#              only:
+#                - main
+#    jobs:
+#      - docker/publish
