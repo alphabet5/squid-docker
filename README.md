@@ -2,7 +2,7 @@
  Docker container for squid proxy.
 
 ## Setup Instructions
-- Make a directory for squid
+- Make a directory for squid and the example whitelists.
 ```bash
 mkdir squid
 ```
@@ -11,6 +11,9 @@ mkdir squid
 
 ```bash
 docker run --rm alphabet5/squid cat /example/squid.conf > squid/squid.conf
+docker run --rm alphabet5/squid cat /example/whitelists/rockwell.txt > squid/whitelists/rockwell.txt
+docker run --rm alphabet5/squid cat /example/whitelists/symantec.txt > squid/whitelists/symantec.txt
+docker run --rm alphabet5/squid cat /example/whitelists/windows_updates.txt > squid/whitelists/windows_updates.txt
 ```
 
 - Modify the squid.conf file for your application.
@@ -21,8 +24,9 @@ docker run --rm alphabet5/squid cat /example/squid.conf > squid/squid.conf
 docker pull squid 
 docker run -d \
 --name=squid \
--v /host/dir/whitelists:/whitelists \
--v /host/dir/squid/squid.conf:/etc/squid/squid.conf \
+--restart=always \
+-v /home/user/squid/whitelists:/whitelists \
+-v /home/user/squid/squid.conf:/etc/squid/squid.conf \
 -p 3128:3128 \
 alphabet5/squid
 ```
