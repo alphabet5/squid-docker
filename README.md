@@ -21,7 +21,7 @@ docker run --rm alphabet5/squid cat /example/whitelists/windows_updates.txt > sq
 - Pull and run the container. 
 
 ```bash
-docker pull squid 
+docker pull alphabet5/squid 
 docker run -d \
 --name=squid \
 --restart=always \
