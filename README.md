@@ -41,6 +41,6 @@ docker build .
 
 ## Changelog
 
-### 0.0.1
+### 0.0.2
 
-- Added `RUN usermod -a -G tty proxy` to the dockerfile to allow squid to write to tty for logging in the container.
+- Made symlinks to write logs to stdout.
