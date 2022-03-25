@@ -15,7 +15,8 @@ RUN \
 RUN echo -e "Defaults:squid !requiretty" > /etc/sudoers.d/squid
 RUN echo -e "squid ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/squid
 
-COPY --chmod=755 entrypoint.sh /sbin/entrypoint.sh
+COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh
 COPY example /example
 COPY example/squid.conf /etc/squid/squid.conf
 
