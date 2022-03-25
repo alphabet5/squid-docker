@@ -39,3 +39,8 @@ cd squid-docker
 docker build .
 ```
 
+## Changelog
+
+### 0.0.1
+
+- Added `RUN usermod -a -G tty proxy` to the dockerfile to allow squid to write to tty for logging in the container.
