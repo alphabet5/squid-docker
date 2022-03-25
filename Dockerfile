@@ -9,14 +9,17 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
  bash \
- squid
+ squid \
+ sudo
 
-COPY entrypoint.sh /sbin/entrypoint.sh
+RUN echo -e "Defaults:squid !requiretty" > /etc/sudoers.d/squid
+RUN echo -e "squid ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/squid
+
+COPY --chmod=755 entrypoint.sh /sbin/entrypoint.sh
 COPY example /example
 COPY example/squid.conf /etc/squid/squid.conf
-RUN chmod 755 /sbin/entrypoint.sh
-RUN ln -sf /dev/stdout /var/log/squid/access.log && \
-    ln -sf /dev/stdout /var/log/squid/cache.log
 
 EXPOSE 3128/tcp
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+
+USER squid
+ENTRYPOINT ["sudo", "/sbin/entrypoint.sh"]

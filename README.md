@@ -41,6 +41,6 @@ docker build .
 
 ## Changelog
 
-### 0.0.2
+### 0.0.3
 
-- Made symlinks to write logs to stdout.
+- Changed dockerfile and default config to write to stdout.

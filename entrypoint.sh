@@ -1,18 +1,6 @@
 #!/bin/bash
 set -e
 
-create_log_dir() {
-  mkdir -p ${SQUID_LOG_DIR}
-  chmod -R 755 ${SQUID_LOG_DIR}
-}
-
-create_cache_dir() {
-  mkdir -p ${SQUID_CACHE_DIR}
-}
-
-create_log_dir
-create_cache_dir
-
 # allow arguments to be passed to squid
 if [[ ${1:0:1} = '-' ]]; then
   EXTRA_ARGS="$@"
