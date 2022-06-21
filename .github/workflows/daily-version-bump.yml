@@ -1,0 +1,26 @@
+name: Daily Version Bump
+
+# This does an empty commit that runs the pre-commit hook that bumps the version number.
+
+# #!/bin/sh
+# ## This pre-commit script bumps the version/build number by 1.
+# [[ $(cat VERSION) =~ ^([0-9]+\.[0-9]+\.)([0-9]+) ]]
+# echo ${BASH_REMATCH[1]}$((${BASH_REMATCH[2]}+1)) > VERSION;
+# git add VERSION
+# echo "Version updated to $(cat VERSION)"
+# exit 0
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+    - name: Empty commit to bump version number
+      run: |
+        git config --global user.name "alphabet5"
+        git config --global user.email "alphabet5@users.noreply.github.com"
+        git commit --allow-empty -m "CI Build Version Bump."
