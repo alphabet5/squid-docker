@@ -24,8 +24,8 @@ jobs:
         run: |
           ver=$(cat VERSION)
           [[ $(cat VERSION) =~ ^([0-9]+)\.([0-9])+\.([0-9]+) ]]
-          major = ${BASH_REMATCH[1]}
-          minor = ${BASH_REMATCH[1]}.${BASH_REMATCH[2]}
+          major=${BASH_REMATCH[1]}
+          minor=${BASH_REMATCH[1]}.${BASH_REMATCH[2]}
           echo "::set-output name=version::$ver"
           echo "::set-output name=major::$major"
           echo "::set-output name=minor::$minor"
