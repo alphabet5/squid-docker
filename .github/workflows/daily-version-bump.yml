@@ -12,7 +12,7 @@ name: Daily Version Bump
 
 on:
   schedule:
-    - cron: '0 10 56 * *'
+    - cron: '0 11 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
